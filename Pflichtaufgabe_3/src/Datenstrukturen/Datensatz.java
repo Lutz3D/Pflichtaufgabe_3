@@ -1,12 +1,13 @@
 package Datenstrukturen;
 import java.util.ArrayList;
 
+import list.AbstractListType;
 import list.SinglyLinkedList;
 
 public class Datensatz {
 	String titel;
 	String dateneinheit;
-	SinglyLinkedList daten = new SinglyLinkedList();
+	private AbstractListType daten = new SinglyLinkedList();
 	//ArrayList<Dateneintrag> daten = new ArrayList<Dateneintrag>();
 	//ArrayList<Dateneintrag> kopie = new ArrayList<Dateneintrag>();
 	
@@ -26,16 +27,20 @@ public class Datensatz {
 	}
 	
 	public Dateneintrag getDateneintrag(int n){
-		return daten.get(n);
+		return daten.getDateneintrag(n);
 	}
 	
 	
-	public int getMax (Dateneintrag eintrag){
-		return daten.getMax(eintrag);
+	public int getMax (){
+		return daten.getMax();
 	}
 	
-	public int getGesamtwert(Dateneintrag eintrag){
-		return daten.getGesamtwert(eintrag);
+	public int getGesamtwert() {
+		int summe = 0;
+		for (int i = 0; i <daten.size(); i++) {
+			summe += daten.getDateneintrag(i).getDatenwert();
+		}
+		return summe;
 	}
 	/*public void DateneintragLoeschen(String string){
 		kopie = (ArrayList<Dateneintrag>) daten.clone();

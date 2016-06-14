@@ -11,10 +11,10 @@ public interface AbstractListType {
 	public int size();
 	
 	public int getGesamtwert(Dateneintrag d);
-	public int getMax(Dateneintrag d);
+	public int getMax();
 	public Dateneintrag getFirst();
 	public Dateneintrag getLast();
-	public Dateneintrag get (int n);
+	public Dateneintrag getDateneintrag (int n);
 	
 	public void remove (Dateneintrag d);
 	

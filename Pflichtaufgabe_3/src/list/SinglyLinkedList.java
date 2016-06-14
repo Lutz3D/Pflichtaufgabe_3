@@ -8,14 +8,22 @@ import Datenstrukturen.Dateneintrag;
 
 public class SinglyLinkedList implements AbstractListType {
 	
-	private Node first;
+	private Node first = null;
+	
+	private class Node { //innere Klasse, nicht von auﬂen erreichbar
+		private Node (Dateneintrag data, Node next) {
+			this.data = data;
+			this.next = next;
+		}
+		private Dateneintrag data;
+		private Node next;
+	}
 
 
 	@Override
 	public void addFirst(Dateneintrag d) {
 		first = new Node (d, first);
-		
-		
+
 	}
 
 	@Override
@@ -30,25 +38,6 @@ public class SinglyLinkedList implements AbstractListType {
 			runPointer.next = new Node (d, null);
 		}
 		
-	}
-
-
-	@Override
-	public boolean isEmpty() {
-		
-		return first == null;
-	}
-
-	@Override
-	public int size() {
-		if (isEmpty() ) return 0;
-		int size = 0;
-		Node runPointer = first;
-		while (runPointer != null) {
-			runPointer = runPointer.next;
-			size++;
-		}
-		return size;
 	}
 
 	@Override
@@ -67,9 +56,9 @@ public class SinglyLinkedList implements AbstractListType {
 		}
 		return runPointer.data;
 	}
-
+	
 	@Override
-	public Dateneintrag get(int n) {
+	public Dateneintrag getDateneintrag(int n) {
 		if (isEmpty() ) throw new NoSuchElementException();
 		int position = 0;
 		Node runPointer = first;
@@ -80,6 +69,32 @@ public class SinglyLinkedList implements AbstractListType {
 		}
 		throw new NoSuchElementException();
 	}
+
+	
+	@Override
+	public int getMax() {
+		for (int i = 0; i<)
+		return 0;
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return first == null;
+		
+	}
+
+	@Override
+	public int size() {
+		if (isEmpty() ) return 0;
+		int size = 0;
+		Node runPointer = first;
+		while (runPointer != null) {
+			runPointer = runPointer.next;
+			size++;
+		}
+		return size;
+	}
+
 
 	@Override
 	public void remove(Dateneintrag d) {
@@ -100,21 +115,14 @@ public class SinglyLinkedList implements AbstractListType {
 		}
 	}
 	
-	private class Node {
-		private Node (Dateneintrag data, Node next) {
-			this.data = data;
-			this.next = next;
-		}
-		private Dateneintrag data;
-		private Node next;
-	}
+
 
 	@Override
 	public int getGesamtwert(Dateneintrag d) {
 		int n = 0;
 		int groesste = 0;
 		for (int i = 0; i<size();i++) {
-			n += first.next.data.getDatenwert();
+			groesste += first.next.data.getDatenwert();
 		}
 		/*for(Dateneintrag each: d){
 			if(each.getDatenwert() > d.get(groesste).getDatenwert()) groesste = n;
@@ -124,11 +132,6 @@ public class SinglyLinkedList implements AbstractListType {
 		return groesste;
 	}
 
-	@Override
-	public int getMax(Dateneintrag d) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 }
