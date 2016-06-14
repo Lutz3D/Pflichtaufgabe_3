@@ -1,11 +1,14 @@
 package Datenstrukturen;
 import java.util.ArrayList;
 
+import list.SinglyLinkedList;
+
 public class Datensatz {
 	String titel;
 	String dateneinheit;
-	ArrayList<Dateneintrag> daten = new ArrayList<Dateneintrag>();
-	ArrayList<Dateneintrag> kopie = new ArrayList<Dateneintrag>();
+	SinglyLinkedList daten = new SinglyLinkedList();
+	//ArrayList<Dateneintrag> daten = new ArrayList<Dateneintrag>();
+	//ArrayList<Dateneintrag> kopie = new ArrayList<Dateneintrag>();
 	
 	
 	public Datensatz(String titel, String dateneinheit){
@@ -15,7 +18,7 @@ public class Datensatz {
 	}
 	
 	public void add(Dateneintrag eintrag){
-		daten.add(eintrag);
+		daten.addFirst(eintrag);
 	}
 	
 	public int getAnzahlDateneintraege(){
@@ -26,14 +29,22 @@ public class Datensatz {
 		return daten.get(n);
 	}
 	
-	public void DateneintragLoeschen(String string){
+	
+	public int getMax (Dateneintrag eintrag){
+		return daten.getMax(eintrag);
+	}
+	
+	public int getGesamtwert(Dateneintrag eintrag){
+		return daten.getGesamtwert(eintrag);
+	}
+	/*public void DateneintragLoeschen(String string){
 		kopie = (ArrayList<Dateneintrag>) daten.clone();
 		for(Dateneintrag each: kopie){
 			if(each.getDatenname().equals(string)){
 				daten.remove(each);
 			}
 		}
-	}
+	}*
 	
 	public void MinDateneintragLoeschen(int min){
 		kopie = (ArrayList<Dateneintrag>) daten.clone();
@@ -81,5 +92,5 @@ public class Datensatz {
 			if(each.getDatenname() == suchbegriff) return true;	
 		}
 		return false;
-	}
+	}*/
 }
