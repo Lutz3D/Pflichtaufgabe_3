@@ -14,8 +14,8 @@ public class App {
 		RelativesDiagramm relativ = new RelativesDiagramm(verkaufszahlen);
 		relativ.ausgabe();
 
-		//VisuellesDiagramm visuell = new VisuellesDiagramm(verkaufszahlen);
-		//JDatensatzEditor editor = new JDatensatzEditor(verkaufszahlen, visuell);
+		VisuellesDiagramm visuell = new VisuellesDiagramm(verkaufszahlen);
+		JDatensatzEditor editor = new JDatensatzEditor(verkaufszahlen, visuell);
 		
 
 	}

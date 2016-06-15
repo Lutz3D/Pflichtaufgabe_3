@@ -106,21 +106,17 @@ public class Datensatz {
 			}
 		}
 	}
-	
-	
-	
+
 	public int getMax() {
 		if (isEmpty() ) throw new NoSuchElementException();
 		Node runPointer = first;
 		int max = 0;
-		while (runPointer != null) {
+		while (runPointer.next != null) {
 			
-			if (max < runPointer.data.getDatenwert())  {
+			if (max < runPointer.data.getDatenwert())  
 				max = runPointer.data.getDatenwert();
 				runPointer = runPointer.next;	
-			}
-				
-				
+
 		}
 		return max;
 	}
@@ -129,15 +125,22 @@ public class Datensatz {
 		if (isEmpty() ) throw new NoSuchElementException();
 		int summe = 0;
 		Node runPointer = first;
-		while (runPointer.next != null) {
+		while (runPointer != null) {
 			summe += runPointer.data.getDatenwert();
 			runPointer = runPointer.next;
 		}
 		return summe;
 	}
 	
-	public void computerForAll (ComputeInterface computer) {
-		
+	public void computeForAll (ComputeInterface computer) {
+		if (isEmpty() ) throw new NoSuchElementException();
+		ArrayList <Dateneintrag> liste = new ArrayList<Dateneintrag>();
+		Node runPointer = first;
+		int n = 0;
+		while (runPointer != null) {
+			//liste = runPointer.data.getDatenname()
+
+		}
 	}
 	
 } //Ende der Klasse Datensatz

@@ -32,7 +32,7 @@ public class JBalkendiagramm extends JPanel{
 		super.paintComponent(g);
 		Point balkenPosition = new Point(0,0);
 		double balkenBreite = 0;
-		double pixelValue = (600-90)/(double)daten.getDateneintrag(daten.getMax()).getDatenwert();
+		double pixelValue = (600-90)/(double)daten.getMax();
 		
 		
 
