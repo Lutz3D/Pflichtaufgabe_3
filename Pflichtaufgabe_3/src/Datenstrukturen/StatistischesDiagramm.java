@@ -9,7 +9,7 @@ public class StatistischesDiagramm {
 
 	public void ausgabe(){
 		System.out.println(daten.titel);
-		for(int i=0; i < daten.getAnzahlDateneintraege(); i++){
+		for(int i=0; i < daten.size(); i++){
 			System.out.println(daten.getDateneintrag(i).getDatenname()+": "+daten.getDateneintrag(i).getDatenwert()+" "+daten.dateneinheit);
 		}
 	}

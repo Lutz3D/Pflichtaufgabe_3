@@ -10,7 +10,7 @@ public interface AbstractListType {
 	public boolean isEmpty();
 	public int size();
 	
-	public int getGesamtwert(Dateneintrag d);
+	//public int getGesamtwert(Dateneintrag d);
 	public int getMax();
 	public Dateneintrag getFirst();
 	public Dateneintrag getLast();

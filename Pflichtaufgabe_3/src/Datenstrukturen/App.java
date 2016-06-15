@@ -6,16 +6,16 @@ public class App {
 
 	public static void main(String[] args) {
 		Datensatz verkaufszahlen = new Datensatz("Verkaufszahlen","Euro");
-		verkaufszahlen.add(new Dateneintrag("Nord" , 300000));
-		verkaufszahlen.add(new Dateneintrag("Sï¿½d" , 140000));
-		verkaufszahlen.add(new Dateneintrag("West" , 900000));
-		verkaufszahlen.add(new Dateneintrag("Ost" , 120000));
+		verkaufszahlen.addLast(new Dateneintrag("Nord" , 300000));
+		verkaufszahlen.addLast(new Dateneintrag("Süd" , 140000));
+		verkaufszahlen.addLast(new Dateneintrag("West" , 900000));
+		verkaufszahlen.addLast(new Dateneintrag("Ost" , 120000));
 		
 		RelativesDiagramm relativ = new RelativesDiagramm(verkaufszahlen);
 		relativ.ausgabe();
 
-		VisuellesDiagramm visuell = new VisuellesDiagramm(verkaufszahlen);
-		JDatensatzEditor editor = new JDatensatzEditor(verkaufszahlen, visuell);
+		//VisuellesDiagramm visuell = new VisuellesDiagramm(verkaufszahlen);
+		//JDatensatzEditor editor = new JDatensatzEditor(verkaufszahlen, visuell);
 		
 
 	}

@@ -1,15 +1,25 @@
 package Datenstrukturen;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
-import list.AbstractListType;
-import list.SinglyLinkedList;
 
 public class Datensatz {
 	String titel;
 	String dateneinheit;
-	private AbstractListType daten = new SinglyLinkedList();
+	//private AbstractListType daten = new SinglyLinkedList();
 	//ArrayList<Dateneintrag> daten = new ArrayList<Dateneintrag>();
 	//ArrayList<Dateneintrag> kopie = new ArrayList<Dateneintrag>();
+	
+	private Node first = null;
+	
+	private class Node { 
+		private Node (Dateneintrag data, Node next) {
+			this.data = data;
+			this.next = next;
+		}
+		private Dateneintrag data;
+		private Node next;
+	}
 	
 	
 	public Datensatz(String titel, String dateneinheit){
@@ -18,30 +28,121 @@ public class Datensatz {
 		
 	}
 	
-	public void add(Dateneintrag eintrag){
-		daten.addFirst(eintrag);
+	public void addFirst(Dateneintrag d) {
+		first = new Node (d, first);
+
 	}
 	
-	public int getAnzahlDateneintraege(){
-		return daten.size();
+	public void addLast(Dateneintrag d) {
+		if (isEmpty()) {
+			addFirst (d);
+		} else {
+			Node runPointer = first;
+			while (runPointer.next != null) {
+				runPointer = runPointer.next;
+			}
+			runPointer.next = new Node (d, null);
+		}
+		
 	}
 	
-	public Dateneintrag getDateneintrag(int n){
-		return daten.getDateneintrag(n);
+	public Dateneintrag getFirst() {
+		if (isEmpty()) throw new NoSuchElementException ();
+		return first.data;
+	}
+	
+	public Dateneintrag getLast() {
+		if (isEmpty () ) throw new NoSuchElementException();
+		
+		Node runPointer = first;
+		while (runPointer.next != null) {
+			runPointer = runPointer.next;
+		}
+		return runPointer.data;
+	}
+	
+	public Dateneintrag getDateneintrag(int n) {
+		if (isEmpty() ) throw new NoSuchElementException();
+		int position = 0;
+		Node runPointer = first;
+		while (runPointer != null) {
+			if (position == n) return runPointer.data;
+			position++;
+			runPointer = runPointer.next;
+		}
+		throw new NoSuchElementException();
+	}
+	
+	public boolean isEmpty() {
+		return first == null;
+		
+	}
+	
+	public int size() {
+		if (isEmpty() ) return 0;
+		int size = 0;
+		Node runPointer = first;
+		while (runPointer != null) {
+			runPointer = runPointer.next;
+			size++;
+		}
+		return size;
+	}
+	
+	public void remove(Dateneintrag d) {
+		if (isEmpty () ) return;
+		
+		if (first.data == null) {
+			first = first.next;
+		} else {
+			Node runPointer = first;
+			
+			while (runPointer != null) {
+				if (runPointer.next.data == d) {
+					runPointer.next = runPointer.next.next;
+				} else {
+					runPointer = runPointer.next;
+				}
+			}
+		}
 	}
 	
 	
-	public int getMax (){
-		return daten.getMax();
+	
+	public int getMax() {
+		if (isEmpty() ) throw new NoSuchElementException();
+		Node runPointer = first;
+		int max = 0;
+		while (runPointer != null) {
+			
+			if (max < runPointer.data.getDatenwert())  {
+				max = runPointer.data.getDatenwert();
+				runPointer = runPointer.next;	
+			}
+				
+				
+		}
+		return max;
 	}
 	
 	public int getGesamtwert() {
+		if (isEmpty() ) throw new NoSuchElementException();
 		int summe = 0;
-		for (int i = 0; i <daten.size(); i++) {
-			summe += daten.getDateneintrag(i).getDatenwert();
+		Node runPointer = first;
+		while (runPointer.next != null) {
+			summe += runPointer.data.getDatenwert();
+			runPointer = runPointer.next;
 		}
 		return summe;
 	}
+	
+	public void computerForAll (ComputeInterface computer) {
+		
+	}
+	
+} //Ende der Klasse Datensatz
+
+
 	/*public void DateneintragLoeschen(String string){
 		kopie = (ArrayList<Dateneintrag>) daten.clone();
 		for(Dateneintrag each: kopie){
@@ -98,4 +199,4 @@ public class Datensatz {
 		}
 		return false;
 	}*/
-}
+

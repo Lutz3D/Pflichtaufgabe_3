@@ -48,10 +48,10 @@ public class JDatensatzEditor extends JFrame{
 		add(btnNew, BorderLayout.SOUTH);
 		
 		//Panel-Layout
-		datenPanel.setLayout(new GridLayout(daten.getAnzahlDateneintraege(), 2));
+		datenPanel.setLayout(new GridLayout(daten.size(), 2));
 
 
-		for(int i = 0; i<daten.getAnzahlDateneintraege(); i++){
+		for(int i = 0; i<daten.size(); i++){
 			//buildDatenFeld(i);
 			
 			datenJLabel.add(new JLabel(daten.getDateneintrag(i).getDatenname()));
@@ -86,10 +86,10 @@ public class JDatensatzEditor extends JFrame{
 				datenPanel.add(datenJTextField.get(index));
 				
 				//Daten dem Dantensatz hinzuf�gen:
-				daten.add(new Dateneintrag("Unbenannt", 0));
+				daten.addLast(new Dateneintrag("Unbenannt", 0));
 				
 				//datenPanel Layout aktualisieren:
-				datenPanel.setLayout(new GridLayout(daten.getAnzahlDateneintraege(), 2));
+				datenPanel.setLayout(new GridLayout(daten.size(), 2));
 				
 				datenJTextField.get(index).addKeyListener(new keyListener(index));
 
@@ -112,7 +112,7 @@ public class JDatensatzEditor extends JFrame{
 	//Hilfsmethode
 	public void ausgabe(){
 		System.out.println(daten.titel);
-		for(int i=0; i < daten.getAnzahlDateneintraege(); i++){
+		for(int i=0; i < daten.size(); i++){
 			System.out.println(daten.getDateneintrag(i).getDatenname()+": "+
 			daten.getDateneintrag(i).getDatenwert()+" "+
 			daten.dateneinheit+" ("+daten.getDateneintrag(i).relativerAnteilVon(daten.getGesamtwert())+"%)");

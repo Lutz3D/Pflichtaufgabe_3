@@ -73,8 +73,19 @@ public class SinglyLinkedList implements AbstractListType {
 	
 	@Override
 	public int getMax() {
-		for (int i = 0; i<)
-		return 0;
+		if (isEmpty() ) throw new NoSuchElementException();
+		int max = 0;
+		Node runPointer = first;
+		while (runPointer.next != null) {
+			max = runPointer.data.getDatenwert();
+			if (max > runPointer.next.data.getDatenwert())  {
+				max = runPointer.data.getDatenwert();
+				runPointer = runPointer.next;	
+			}
+				
+				
+		}
+		return max;
 	}
 	
 	@Override
@@ -117,20 +128,15 @@ public class SinglyLinkedList implements AbstractListType {
 	
 
 
-	@Override
+	/*@Override
 	public int getGesamtwert(Dateneintrag d) {
 		int n = 0;
 		int groesste = 0;
 		for (int i = 0; i<size();i++) {
 			groesste += first.next.data.getDatenwert();
 		}
-		/*for(Dateneintrag each: d){
-			if(each.getDatenwert() > d.get(groesste).getDatenwert()) groesste = n;
-			n++;
-		}
-		return groesste;*/
 		return groesste;
-	}
+	}*/
 
 
 

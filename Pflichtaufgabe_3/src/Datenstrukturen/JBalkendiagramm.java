@@ -36,7 +36,7 @@ public class JBalkendiagramm extends JPanel{
 		
 		
 
-			for(int i = 0; i<daten.getAnzahlDateneintraege(); i++){
+			for(int i = 0; i<daten.size(); i++){
 
 				balkenPosition.setLocation(10, 10+i*25);
 				balkenBreite = pixelValue * daten.getDateneintrag(i).getDatenwert();
