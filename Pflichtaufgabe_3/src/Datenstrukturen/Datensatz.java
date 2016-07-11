@@ -1,6 +1,7 @@
 package Datenstrukturen;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 
 public class Datensatz {
@@ -11,14 +12,23 @@ public class Datensatz {
 	//ArrayList<Dateneintrag> kopie = new ArrayList<Dateneintrag>();
 	
 	private Node first = null;
+	private Node last = null;
 	
 	private class Node { 
-		private Node (Dateneintrag data, Node next) {
+		private Node (Dateneintrag data, Node next, Node prev) {
 			this.data = data;
 			this.next = next;
+			this.prev = prev;
 		}
 		private Dateneintrag data;
 		private Node next;
+		private Node prev;
+	}
+	
+	public Dateneintrag reverse() {
+		Dateneintrag x = null ;
+		Stack<Dateneintrag> stack = new Stack<Dateneintrag>();
+		return x;
 	}
 	
 	
@@ -29,7 +39,7 @@ public class Datensatz {
 	}
 	
 	public void addFirst(Dateneintrag d) {
-		first = new Node (d, first);
+		first = new Node (d, first, last);
 
 	}
 	
@@ -41,7 +51,8 @@ public class Datensatz {
 			while (runPointer.next != null) {
 				runPointer = runPointer.next;
 			}
-			runPointer.next = new Node (d, null);
+			runPointer.next = new Node (d, null, last);
+			
 		}
 		
 	}
@@ -89,23 +100,7 @@ public class Datensatz {
 		return size;
 	}
 	
-	public void remove(Dateneintrag d) {
-		if (isEmpty () ) return;
-		
-		if (first.data == null) {
-			first = first.next;
-		} else {
-			Node runPointer = first;
-			
-			while (runPointer != null) {
-				if (runPointer.next.data == d) {
-					runPointer.next = runPointer.next.next;
-				} else {
-					runPointer = runPointer.next;
-				}
-			}
-		}
-	}
+
 
 	public int getMax() {
 		if (isEmpty() ) throw new NoSuchElementException();
@@ -133,17 +128,56 @@ public class Datensatz {
 	}
 	
 	public void computeForAll (ComputeInterface computer) {
-		if (isEmpty() ) throw new NoSuchElementException();
 		ArrayList <Dateneintrag> liste = new ArrayList<Dateneintrag>();
-		Node runPointer = first;
-		int n = 0;
-		while (runPointer != null) {
-			//liste = runPointer.data.getDatenname()
-
+		Node runPointer  = first;
+		
+		for (int i=0; i<size();i++) {
+			liste.add(runPointer.data);
+			runPointer = runPointer.next;
 		}
+		
+		for (Dateneintrag each: liste) {
+			computer.compute(each);
+		}
+
+		
+	}
+
+	public void removeLast () {
+		if (isEmpty() ) throw new NoSuchElementException();
+		Node runPointer = first;
+		while (runPointer.next.next != null) {
+			runPointer = runPointer.next;
+		}
+		runPointer.next = null;
+					
+				
+				
+			
+		
+		
 	}
 	
 } //Ende der Klasse Datensatz
+
+	/*public void remove(Dateneintrag d) {
+		if (isEmpty () ) return;
+
+			if (first.data == null) {
+				first = first.next;
+			} else {
+				Node runPointer = first;
+	
+			while (runPointer != null) {
+				if (runPointer.next.data == d) {
+					runPointer.next = runPointer.next.next;
+				} else {
+			runPointer = runPointer.next;
+		}
+	}
+}
+}*/
+	
 
 
 	/*public void DateneintragLoeschen(String string){
@@ -201,5 +235,24 @@ public class Datensatz {
 			if(each.getDatenname() == suchbegriff) return true;	
 		}
 		return false;
+		
+		
+			public void remove(Dateneintrag d) {
+		if (isEmpty () ) return;
+		
+		if (first.data == null) {
+			first = first.next;
+		} else {
+			Node runPointer = first;
+			
+			while (runPointer != null) {
+				if (runPointer.next.data == d) {
+					runPointer.next = runPointer.next.next;
+				} else {
+					runPointer = runPointer.next;
+				}
+			}
+		}
+	}
 	}*/
 

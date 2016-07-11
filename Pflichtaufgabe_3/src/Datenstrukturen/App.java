@@ -7,7 +7,7 @@ public class App {
 	public static void main(String[] args) {
 		Datensatz verkaufszahlen = new Datensatz("Verkaufszahlen","Euro");
 		verkaufszahlen.addLast(new Dateneintrag("Nord" , 300000));
-		verkaufszahlen.addLast(new Dateneintrag("Süd" , 140000));
+		verkaufszahlen.addLast(new Dateneintrag("SÃ¼d" , 140000));
 		verkaufszahlen.addLast(new Dateneintrag("West" , 900000));
 		verkaufszahlen.addLast(new Dateneintrag("Ost" , 120000));
 		

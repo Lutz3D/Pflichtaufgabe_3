@@ -7,14 +7,26 @@ public class RelativesDiagramm extends StatistischesDiagramm{
 	}
 	@Override
 	public void ausgabe(){
-		System.out.println(daten.titel);
+
 		for(int i=0; i < daten.size(); i++){
 			System.out.println(daten.getDateneintrag(i).getDatenname()+": "+
 			daten.getDateneintrag(i).getDatenwert()+" "+
-			daten.dateneinheit+" ("+daten.getDateneintrag(i).relativerAnteilVon(daten.getGesamtwert())+"%)");
+			daten.dateneinheit+" ("+daten.getDateneintrag(i).relativerAnteilVon(daten.getGesamtwert())+"%)" );
 		}
 		System.out.println("\nGesamtwert: "+ daten.getGesamtwert()+" (100%)");
-		System.out.println("Max Wert " + daten.getMax() );
+
 	}
 
 }
+
+
+
+
+
+
+/*		System.out.println(daten.titel);
+TotalSum ts = new TotalSum();
+daten.computeForAll(ts);
+System.out.println("ComputeMethode Summe" + summe);
+
+*/
